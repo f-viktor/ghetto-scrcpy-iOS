@@ -1,4 +1,4 @@
-#ghetto-scrcpy-iOS
+# ghetto-scrcpy-iOS
 
 It's our most sophisticated and powerful ghetto script for controlling your garbage phone from a linux machine yet.
 
