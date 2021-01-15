@@ -15,7 +15,7 @@ Control your Jailbroken iOS device from your linux computer.
 Touch/drag/hold/scroll  
 Type on your keyboard*  
 *this is really ghetto and you will probably need to tweak some values to actually get it working  
-(would be nice to fake a bluetooth keyboard or smthn)  
+(the SimulateTouch guy is working on making a character input api, once it works this will be nicer.)  
 
 ![Demo](https://github.com/f-viktor/ghetto-scrcpy-iOS/blob/main/demo.gif)
 
@@ -31,7 +31,7 @@ systemctl restart avahi-daemon.service
 ```
 5. Mirror your screen to UxPlay  
 6. Once that all works, edit the `device_ip`,`device_screen_height`,`device_screen_width` lines in the `scrgto.py` script to align with reality  
-7. setup a venv for the script `python3 -m venv ghetto`  
+7. setup a venv for the script `python3 -m venv ghetto` and `source ./ghetto/bin/activate`
 8. install `pip install python-libxdo`  
 9. start this script `python3 scrgto.py`  
 10. Click on the window with your mirrored screen  
@@ -101,6 +101,6 @@ Because of that it's kinda janky, and you'll need to click once to make it behav
 If you have gesture control on your phone you might be able to somehow program a home gesture, but I didn't have much luck with that.  
 
 ## Todo
-Create a fake bluetooth device so we can finally type like human beings, and copy-paste.  
+add better keyboard management and copy-paste
 Make home invocation less glitchy.  
 Bankrupt Apple so they don't make any more trash.  
