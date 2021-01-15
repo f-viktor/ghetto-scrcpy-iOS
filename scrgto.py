@@ -46,7 +46,7 @@ def generateKeymap():
 
 
     ''' You will very likely have to tweak these 6 values to align your keyboard correctly'''
-    #approx. how meny pixels wide and high are keys:
+    #approx. how many pixels wide and high are keys:
     keyHeight=120
     keyWidth=75
 
@@ -108,11 +108,25 @@ def generateKeymap():
         keyboard.Key.backspace  :  KeyTable(device_screen_width-keyWidth, row2_y),
     }
 
+TOAST_TYPE_SUCCESS = 4
+TOAST_TYPE_NORMAL = 3
+TOAST_TYPE_WARNING = 2
+TOAST_TYPE_ERROR = 1
+
+def showToast(s, type, content, duration):
+    s.send(("22" + str(type) + ";;" + str(content) + ";;" + str(duration) + "\r\n").encode())
+    print(s.recv(1024))
+
+
 def pressKey(key):
     try:
         s.send(("101" + formatSocketData(TOUCH_DOWN, 7, keymap[key].x, keymap[key].y)).encode())
         time.sleep(0.01)
         s.send(("101" + formatSocketData(TOUCH_UP, 7, keymap[key].x, keymap[key].y)).encode())
+
+        # this should work, but doesn't on my phone
+        s.send(("241;;"+key+"\r\n").encode())
+
     except:
         print("key pressed pressed isnt mapped", key)
 
@@ -122,6 +136,17 @@ def pressSpecialKey(key):
         s.send(("101" + formatSocketData(TOUCH_DOWN, 7, specialKeymap[key].x, specialKeymap[key].y)).encode())
         time.sleep(0.01)
         s.send(("101" + formatSocketData(TOUCH_UP, 7, specialKeymap[key].x, specialKeymap[key].y)).encode())
+
+        # I have managed to improve the Python language in a way
+        if key == keyboard.Key.space:
+                    s.send(("241;;"+" \r\n").encode())
+        if key == keyboard.Key.backspace:
+                    s.send("244;;1\r\n".encode())
+        if key == keyboard.Key.left:
+                    s.send("243;;-1\r\n".encode())
+        if key == keyboard.Key.right:
+                    s.send("243;;1\r\n".encode())
+
     except:
         print("key pressed pressed isnt mapped", key)
 
