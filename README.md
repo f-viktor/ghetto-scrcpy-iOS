@@ -17,7 +17,7 @@ Type on your keyboard*
 *this is really ghetto and you will probably need to tweak some values to actually get it working  
 (would be nice to fake a bluetooth keyboard or smthn)  
 
-<Insert video of it being cool>  
+[Demo](https://github.com/f-viktor/ghetto-scrcpy-iOS/blob/main/demo.gif)
 
 ## How to set it up
 1. Get a jailbroken device  
