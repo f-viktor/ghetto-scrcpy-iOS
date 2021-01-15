@@ -101,6 +101,6 @@ Because of that it's kinda janky, and you'll need to click once to make it behav
 If you have gesture control on your phone you might be able to somehow program a home gesture, but I didn't have much luck with that.  
 
 ## Todo
-add better keyboard management and copy-paste
+add better keyboard management and copy-paste  
 Make home invocation less glitchy.  
 Bankrupt Apple so they don't make any more trash.  
