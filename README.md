@@ -1,4 +1,4 @@
-# ghetto-scrcpy-iOS
+#ghetto-scrcpy-iOS
 
 It's our most sophisticated and powerful ghetto script for controlling your garbage phone from a linux machine yet.
 
@@ -42,16 +42,33 @@ Work on inferior operating systems(Windows,Mac)
 Provide a smooth user experience  
 copy-paste  
 
+# If your keyboard types double
+Congrats! It seems that for you, sending characters via the API actually works.  
+Simply remove the ghetto keyboard parts from the code from the `pressKey` and `pressSpecialKey` functions:
+
+```
+s.send(("101" + formatSocketData(TOUCH_DOWN, 7, keymap[key].x, keymap[key].y)).encode())
+time.sleep(0.01)
+s.send(("101" + formatSocketData(TOUCH_UP, 7, keymap[key].x, keymap[key].y)).encode())
+```
+and
+```
+s.send(("101" + formatSocketData(TOUCH_DOWN, 7, specialKeymap[key].x, specialKeymap[key].y)).encode())
+time.sleep(0.01)
+s.send(("101" + formatSocketData(TOUCH_UP, 7, specialKeymap[key].x, specialKeymap[key].y)).encode())
+```
+Now you should be typing normally.
+
 # How to get the keyboard better aligned
 If you aren't using an iPhone6s with the default keyboard, you might find the keyboard is misaligned, or isn't working.  
-This is because this great phone does not provide an API for entering actual characters, therefore I actually tap the virtual keyboard on the screen with the script.  
+The touch sim API we are using is kinda incosistent on sending characters, and doesn't work on my phone, therefore I actually tap the virtual keyboard on the screen with the script.  
 I know.... maybe next time you'll think about that before buying a phone.  
 So because of this, based on the resolution/aspect ratio/keyboard layout of your specific device, it might be kinda weird.  
 You have these 6 variables to tweak all aspects of keyboard positioning:  
 
 ```py
 ''' You will very likely have to tweak these 6 values to align your keyboard correctly'''
-#approx. how meny pixels wide and high are keys:
+#approx. how many pixels wide and high are keys:
 keyHeight=120
 keyWidth=75
 
@@ -86,4 +103,4 @@ If you have gesture control on your phone you might be able to somehow program a
 ## Todo
 Create a fake bluetooth device so we can finally type like human beings, and copy-paste.  
 Make home invocation less glitchy.  
-Bankrupt Apple so they don't make anymore trash.  
+Bankrupt Apple so they don't make any more trash.  
