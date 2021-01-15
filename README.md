@@ -42,7 +42,7 @@ Work on inferior operating systems(Windows,Mac)
 Provide a smooth user experience  
 copy-paste  
 
-# If your keyboard types double
+## If your keyboard types double
 Congrats! It seems that for you, sending characters via the API actually works.  
 Simply remove the ghetto keyboard parts from the code from the `pressKey` and `pressSpecialKey` functions:
 
@@ -59,7 +59,7 @@ s.send(("101" + formatSocketData(TOUCH_UP, 7, specialKeymap[key].x, specialKeyma
 ```
 Now you should be typing normally.
 
-# How to get the keyboard better aligned
+## How to get the keyboard better aligned
 If you aren't using an iPhone6s with the default keyboard, you might find the keyboard is misaligned, or isn't working.  
 The touch sim API we are using is kinda incosistent on sending characters, and doesn't work on my phone, therefore I actually tap the virtual keyboard on the screen with the script.  
 I know.... maybe next time you'll think about that before buying a phone.  
